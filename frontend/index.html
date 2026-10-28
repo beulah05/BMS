@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northstar Bank | Banking Management System</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">N</span><span>northstar<span class="brand-light">bank</span></span></a>
+      <p class="nav-label">MENU</p>
+      <a class="nav-item active" href="#overview"><span>▦</span> Overview</a>
+      <a class="nav-item" href="#transactions"><span>↕</span> Transactions</a>
+      <a class="nav-item" href="#account"><span>◎</span> My account</a>
+      <div class="sidebar-bottom">
+        <div class="secure-note"><span class="secure-dot"></span><div><strong>Demo environment</strong><small>Learning project only</small></div></div>
+        <p class="side-foot">Northstar Bank © 2026</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">PERSONAL BANKING</p><h1>Good morning<span class="wave"> ✦</span></h1><p class="muted">Your money, at a glance.</p></div>
+        <div class="top-actions"><span class="demo-pill">DEMO MODE</span><div class="avatar" id="avatar">G</div></div>
+      </header>
+
+      <section class="welcome-row">
+        <div><h2 id="welcomeName">Welcome, Guest</h2><p class="muted" id="accountMeta">Create a demo account to get started.</p></div>
+        <button class="button button-dark" id="createAccountBtn">＋ Create demo account</button>
+      </section>
+
+      <section class="stats-grid" id="overview">
+        <article class="balance-card">
+          <div class="card-top"><span>Total balance</span><span class="tiny-icon">↗</span></div>
+          <p class="balance-amount" id="balance">₹0.00</p>
+          <p class="balance-foot"><span class="balance-dot"></span> Demo account balance</p>
+          <div class="card-decoration"></div>
+        </article>
+        <article class="stat-card"><div class="stat-icon purple">↗</div><p class="stat-label">Money deposited</p><p class="stat-value" id="totalDeposits">₹0.00</p><p class="stat-hint">Total deposits in this session</p></article>
+        <article class="stat-card"><div class="stat-icon peach">↘</div><p class="stat-label">Money withdrawn</p><p class="stat-value" id="totalWithdrawals">₹0.00</p><p class="stat-hint">Total withdrawals in this session</p></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel actions-panel">
+          <div class="panel-heading"><div><h3>Quick actions</h3><p class="muted">Manage your demo account</p></div><span class="panel-icon">✳</span></div>
+          <div class="action-buttons">
+            <button class="action-tile" id="depositOpen"><span class="action-symbol deposit-symbol">＋</span><strong>Deposit</strong><small>Add demo funds</small></button>
+            <button class="action-tile" id="withdrawOpen"><span class="action-symbol withdraw-symbol">−</span><strong>Withdraw</strong><small>Remove demo funds</small></button>
+          </div>
+          <div class="notice"><span>ⓘ</span><p>All amounts are simulated for this project. No real money moves.</p></div>
+        </article>
+
+        <article class="panel account-panel" id="account">
+          <div class="panel-heading"><div><h3>Account details</h3><p class="muted">Your demo account information</p></div><span class="panel-icon">◎</span></div>
+          <div class="account-row"><span>Account holder</span><strong id="holderName">Not created</strong></div>
+          <div class="account-row"><span>Account number</span><strong class="mono" id="accountNumber">•••• ••••</strong></div>
+          <div class="account-row"><span>Account type</span><strong>Savings (demo)</strong></div>
+          <div class="account-row"><span>Status</span><strong class="status-active"><i></i> Demo active</strong></div>
+        </article>
+      </section>
+
+      <section class="panel transactions-panel" id="transactions">
+        <div class="panel-heading transactions-heading"><div><h3>Recent transactions</h3><p class="muted">Your latest account activity</p></div><span class="transaction-count" id="transactionCount">0 transactions</span></div>
+        <div class="table-wrap"><table><thead><tr><th>TRANSACTION</th><th>DATE</th><th>TYPE</th><th>STATUS</th><th class="align-right">AMOUNT</th></tr></thead><tbody id="transactionRows"><tr><td colspan="5" class="empty-state">Create a demo account to see transactions here.</td></tr></tbody></table></div>
+      </section>
+      <footer class="footer">Built for learning · Not a real banking service <span>Privacy · Security · Help</span></footer>
+    </main>
+  </div>
+
+  <dialog id="transactionDialog" class="dialog">
+    <form id="transactionForm">
+      <button type="button" class="dialog-close" id="dialogClose" aria-label="Close">×</button>
+      <div class="dialog-icon" id="dialogIcon">＋</div><p class="eyebrow" id="dialogEyebrow">ACCOUNT ACTION</p>
+      <h2 id="dialogTitle">Deposit funds</h2><p class="muted" id="dialogDescription">Add simulated funds to your account.</p>
+      <label for="amount">Amount (₹)</label><input id="amount" name="amount" type="number" min="1" step="0.01" placeholder="e.g. 500" required>
+      <p class="form-error" id="formError" role="alert"></p>
+      <button class="button button-dark full-width" id="submitTransaction" type="submit">Confirm deposit</button>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./js/app.js"></script>
+</body>
+</html>
